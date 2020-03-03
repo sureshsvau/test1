@@ -22,6 +22,8 @@
   3) Create a working directory (ex: /Users/<user>/myapplication) to copy the scripts/config files and change directory to the working directory
  
   4) use the following git commands to pull the app to your working directory
+  
+   git clone https://github.com/sureshsvau/test1.git
 
   5) You do not need to make any changes by default. Please refer this section incase you want to override the default values
 
