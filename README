@@ -1,0 +1,80 @@
+                        display-config API 
+
+  What is it?
+  -----------
+
+  The display-config API is written using Flask (Micro Web Framework) in Python. This App is written to display pre-defined configurations of the API in json format
+
+  Description  
+  ------------------
+
+  This App is containerised in ubuntu 18.04 docker container and is configured to run on the port 8080. "/Info" end point of this App displays the API configuration details in the json format (please refer the section Usage for more details on the output)
+
+
+
+  Installation 
+  -------------
+  
+  1) Login to the machine where this app is planned to be setup and install git on the machine. Please refer the git installation steps at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+ 
+  2) Install docker on the machine and please refer the docker installation steps at https://docs.docker.com/install/
+
+  3) Create a working directory (ex: /Users/<user>/myapplication) to copy the scripts/config files and change directory to the working directory
+ 
+  4) use the following git commands to pull the app to your working directory
+
+  5) You do not need to make any changes by default. Please refer this section incase you want to override the default values
+
+     Dockerfile:
+      
+     A) FLASK_APP_VERSION: Change this to the required version
+     B) FLASK_ENV: Change this to the environment name according to your need
+     C) FLASK_RUN_PORT: Change this to the required port number instead of 8080 if required. Please make the following changes as well in this case
+          i) Change the port number as well in the file display-config.py
+          ii) Change the port numbers for the step-7 in this document
+
+  6) Build the docker image for the app by executing the following command. Please note the dot at the end
+
+  docker build --no-cache -t display-config:latest --build-arg GIT_COMMIT=$(git log -1 --format=%H) .
+
+  7) Run the app by executing the following command to run the app on the port 8080
+
+   docker run  -d -p 8080:8080  display-config:latest
+
+  Usage 
+  ------------
+
+  Open the browser on your machine and access the url http://<host-name>:8080/Info. Replace <host-name> with the ip address or dns name of the machine where the container is being executed.
+ 
+  This displays the API configuration in the json format as following
+
+
+{
+  "service_name": "display-config", 
+  "version": "1.0.0", 
+  "git_commit_sha": "5967c0e41facfc6cbade2fa72c2ae57245175de8", 
+  "environment": {
+    "service_port": "8080", 
+    "log_level": "INFO"
+  }
+}
+ 
+
+
+
+  Support 
+  ---------
+
+  Please contact Suresh (sureshsv.2k@outlook.com) for any queries / support on this
+
+
+  License
+  ---------
+  
+Copyright (c) [2020] [Suresh Babu]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
