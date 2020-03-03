@@ -5,7 +5,7 @@ import os
 
 @app.route('/')
 def home():
-    return 'Welcome to my sample application'
+    return 'Welcome to My Sample Application!'
 
 @app.route('/Info')
 def get_details():
